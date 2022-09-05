@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Link, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
+import NotFound from './components/NotFound'
+const Photo = React.lazy(() => import('./features/Photo'));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter>
+            <ul>
+              <li><Link to="/photos">Go to photo page</Link></li>
+              <li><Link to="/photos/add">Go to add photo</Link></li>
+            </ul>
+            <Routes>
+                <Route path="/" element={<Navigate to="/photos" />} ></Route>
+                <Route path="photos/*" element={<Photo/>} />
+                <Route element={NotFound} />
+            </Routes>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
 }
