@@ -9,11 +9,11 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
+        <BrowserRouter> 
             <Header />
             <Routes>
                 <Route path="/" element={<Navigate to="/photos" />} ></Route>
-                <Route path="photos/*" element={<Photo/>} />
+                <Route  path="photos/*" element={<Photo/>} />
                 <Route path="*" element={<NotFound/>} />
             </Routes>
         </BrowserRouter>
