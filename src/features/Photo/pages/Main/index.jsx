@@ -4,9 +4,12 @@ import { Container } from 'reactstrap';
 import Banner from 'components/Banner';
 import Images from 'constants/images';
 import './Main.scss';
+import { useSelector } from 'react-redux';
+import { photoReducer } from 'app/store';
 
 
 function Main(props) {
+  const listPhoto = useSelector(state => state.photos);
   return (
     <div className='photo-main'>
       <Banner
