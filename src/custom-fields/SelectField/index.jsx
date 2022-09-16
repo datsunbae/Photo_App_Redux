@@ -27,7 +27,7 @@ function SelectField(props) {
         field, form,
         label, placeholder, disabled, options
     } = props;
-    
+
     const { name, value } = field;
     const { errors, touched} = form;
     const showError = errors[name] && touched[name];

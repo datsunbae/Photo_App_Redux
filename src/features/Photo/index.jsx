@@ -9,6 +9,7 @@ function Photo(props) {
     <Routes>
       <Route exact path="" element={<MainPage/>} />
       <Route path="add" element={<AddEditPage/>} />
+      <Route path="/:photoId" element={<AddEditPage/>} />
       <Route path="*" element={<NotFoundPage/>} />
     </Routes>
   );

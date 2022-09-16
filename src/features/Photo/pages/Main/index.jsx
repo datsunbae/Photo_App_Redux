@@ -1,23 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Banner from 'components/Banner';
 import Images from 'constants/images';
 import './Main.scss';
-import { useSelector } from 'react-redux';
-import { photoReducer } from 'app/store';
+import { useDispatch, useSelector } from 'react-redux';
 import PhotoList from 'features/Photo/components/PhotoList';
+import { removePhoto } from 'features/Photo/photoSlice';
 
 
 function Main(props) {
   const listPhoto = useSelector(state => state.photos);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleEditPhoto = (photo) => {
-    console.log('Edit', photo);
+    const editPhotoURL = `/photos/${photo.id}`;
+    navigate(editPhotoURL);
   }
 
   const handleRemovePhoto = (photo) => {
-    console.log('Remove', photo);
+    const idPhotoRemove = photo.id;
+    const action = removePhoto(idPhotoRemove);
+    dispatch(action);
   }
   return (
     <div className='photo-main'>

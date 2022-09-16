@@ -20,10 +20,12 @@ function PhotoCard(props) {
 
   const handleEditClick = () => {
     console.log("Edit");
+    if(onEditClick) onEditClick(photo);
   };
 
   const handleRemoveClick = () => {
     console.log("Remove");
+    if(onRemoveClick) onRemoveClick(photo);
   };
 
   return (
